@@ -28,7 +28,7 @@ typora-copy-images-to: ..\Images
 
 如上图，如果我们把架构设计成单体应用，大家都各辞其职。UI做UI、中间件做中间件、DBA做DBA。在某一个业务当中，这个服务可能同时涉及到UI、中间件、DBA这几种工作。会糅合多种人员在同一个业务内，会使得团队与团队之间的沟通不像以前那么简单而又直接，可能会出现一些修改一个地方涉及到多个部门通力配合的情况。
 
-![PreferFunctionalStaffOrganization](..\Images\PreferFunctionalStaffOrganization.png)
+![PreferFunctionalStaffOrganization](../Images/PreferFunctionalStaffOrganization.png)
 
 微服务的方式则和上面的单体应用不一样，它会将服务按照业务能力来组织。这种服务会接受一个针对业务领域的软件实现，包括用户界面、持久层存储、额外的一些协作。结果导致团队是跨越功能，包含用户界面、数据库、项目管理等完整技能的团队。
 
