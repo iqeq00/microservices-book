@@ -85,5 +85,5 @@ typora-copy-images-to: ..\Images
 
 ## 4 参考资料
 
-Martin Fowler:  <https://martinfowler.com/articles/microservices.html
+Martin Fowler:  https://martinfowler.com/articles/microservices.html
 
