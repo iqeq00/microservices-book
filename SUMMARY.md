@@ -7,4 +7,5 @@
   * [微服务治理与去中心化](Microservices/Decentralized Governance.md)
   * [微服务演进式设计与优缺点](Microservices/Evolutionary Design.md)
   * [微服务宏观把控](Microservices/Macro Control.md)
-
+* [面向服务的架构](SOA/README.md)
+  * [SOA理论与概念](SOA/Service-oriented architecture.md)
