@@ -9,4 +9,6 @@
   * [微服务宏观把控](Microservices/Macro Control.md)
 * [面向服务的架构](SOA/README.md)
   * [SOA理论与概念](SOA/Service-oriented architecture.md)
+  * [维基百科微服务](SOA/Microservices.md)
+  * [微服务和SOA对比](SOA/Microservices and SOA.md)
 
