@@ -48,7 +48,9 @@ Spring Boot 提供了两种类型的配置文件形式，但是都是遵循约�
 
 ### properties 文件格式
 
-**application.properties**，传统的经典文件格式。
+传统的经典文件格式。
+
+**application.properties**
 
 ```properties
 server.port=8080

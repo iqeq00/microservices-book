@@ -10,7 +10,7 @@
 
 **起步依赖**，Spring Boot 引入的理念，通过它可以很方便的把 Spring Boot 以及需要的第三方插件集成到应用当中。
 
-## version
+## Version
 
 因为有 starter 的存在，其实 Spring Boot 的版本号在 dependency 里是省略掉的，由 starter 统一管理，Spring Cloud 也是如此。
 
