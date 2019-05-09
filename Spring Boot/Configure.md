@@ -48,7 +48,7 @@ Spring Boot 提供了两种类型的配置文件形式，但是都是遵循约�
 
 ### properties 文件格式
 
-application.properties，传统的经典文件格式。
+**application.properties**，传统的经典文件格式。
 
 ```properties
 server.port=8080
@@ -59,6 +59,8 @@ server.context-path=/
 ### yml 文件格式
 
 [YAML](https://zh.wikipedia.org/wiki/YAML)（Yet Another Markup Language），一种新的文件格式。
+
+**application.yml**
 
 ```yaml
 server:
