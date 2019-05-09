@@ -14,5 +14,5 @@
 
 * [Spring Boot](Spring Boot/README.md)
   * [Spring Boot 应用起步与配置](Spring Boot/Spring Initializr.md)
-  * [Spring Boot 应用配置分析](Spring Boot/Configure.md)
+  * [Spring Boot 应用配置分析](Spring%20Boot/Configure.md)
 
