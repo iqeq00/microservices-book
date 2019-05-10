@@ -8,11 +8,11 @@
   * [微服务演进式设计与优缺点](microservices/EvolutionaryDesign.md)
   * [微服务宏观把控](microservices/MacroControl.md)
 * [面向服务的架构](soa/README.md)
-  * [SOA 理论与概念](soa/Service-oriented%20architecture.md)
+  * [SOA 理论与概念](soa/Service-orientedArchitecture.md)
   * [维基百科微服务](soa/Microservices.md)
-  * [微服务和 SOA 对比](soa/Microservices%20and%20SOA.md)
+  * [微服务和 SOA 对比](soa/MicroservicesAndSOA.md)
 
-* [Spring Boot](spring%20boot/README.md)
-  * [Spring Boot 应用起步与配置](spring%20boot/Spring%20Initializr.md)
-  * [Spring Boot 应用配置分析](spring%20boot/Configure.md)
+* [Spring Boot](springboot/README.md)
+  * [Spring Boot 应用起步与配置](springboot/SpringInitializr.md)
+  * [Spring Boot 应用配置分析](springboot/Configure.md)
 
