@@ -1,5 +1,5 @@
 ---
-typora-copy-images-to: ..\Images
+typora-copy-images-to: ..\images
 ---
 
 # 微服务与SOA对比
@@ -19,7 +19,7 @@ typora-copy-images-to: ..\Images
 - SOA是一项企业级范围的计划，旨在创建可重用，同步可用的服务和API。 这有助于开发人员更快速地创建应用程序，并更轻松地合并来自其他系统的数据。
 - 微服务架构是一种用于构建单个应用程序的选项，使该应用程序更加灵活，可扩展且具有弹性。
 
-![SOA_microservices](../Images/SOA_microservices.png)
+![SOA_microservices](../images/SOA_microservices.png)
 
 **SOA是与企业服务的公开性密切相关的，关注的范围更大，是应用与应用之间的通信、服务公开。**
 
@@ -39,7 +39,7 @@ typora-copy-images-to: ..\Images
 
 最近，关于这两种架构之间的差异，或者是否存在任何差异，已经有很多大惊小怪。 为了深入研究引发数百次辩论的这个问题，我将首先简要地定义SOA和微服务架构及其起源，然后我们将对它们进行比较，看看我们如何才能最好地区分它们。
 
-![soa-vs-microservices-featured-image](../Images/soa-vs-microservices-featured-image.png)
+![soa-vs-microservices-featured-image](../images/soa-vs-microservices-featured-image.png)
 
 ### Service-Oriented Architecture (SOA)
 
@@ -49,7 +49,7 @@ typora-copy-images-to: ..\Images
 
 SOA中有两个主要角色：服务提供者和服务使用者。软件代理可以扮演两种角色。消费者层是用户（人，应用程序的其他组件或第三方）与SOA交互的点，提供者层由SOA中的所有服务组成。
 
-![soa-vs-microservices](../Images/soa-vs-microservices.png)
+![soa-vs-microservices](../images/soa-vs-microservices.png)
 
 SOA首先在90年代中期得名，当时一家名为Gartner Group的公司认识到软件架构中的这一新兴趋势，采用它并在全球范围内推广它。 通过这样做，他们成功地大大加快了这种架构模式的采用和进一步发展。 但是，使用分布式服务作为软件架构的第一个记录可以追溯到80年代早期。
 

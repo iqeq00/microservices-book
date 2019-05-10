@@ -1,5 +1,5 @@
 ---
-typora-copy-images-to: ..\Images
+typora-copy-images-to: ..\images
 ---
 
 # SOA理论与概念
@@ -131,9 +131,9 @@ SOA 可以被视为连续体的一部分，其范围从分布式计算和模块�
 
 ## 图解组成部分
 
-![450px-SOA_Elements](../Images/450px-SOA_Elements.png)
+![450px-SOA_Elements](../images/450px-SOA_Elements.png)
 
-![450px-SOA_Metamodel.svg](../Images/450px-SOA_Metamodel.svg.png)
+![450px-SOA_Metamodel.svg](../images/450px-SOA_Metamodel.svg.png)
 
 ## 组织利益
 
