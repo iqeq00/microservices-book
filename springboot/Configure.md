@@ -66,9 +66,9 @@ server.context-path=/
 
 ```yaml
 server:
-	port: 8080
-	address: 127.0.0.1
-	context-path: /
+    port: 8080
+    address: 127.0.0.1
+    context-path: /
 ```
 
 感觉上 yml 的方式要更简洁一点，可以少写前缀 server 很多次。
