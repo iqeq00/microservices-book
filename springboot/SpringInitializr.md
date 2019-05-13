@@ -16,9 +16,10 @@
 
 ## bootRun
 
-启动 Spring Boot 指令：gradle bootRun / gradlew bootRun。
+- 启动 Spring Boot 指令：gradle bootRun / gradlew bootRun。
 
-也可以在 @SpringBootApplication 所注释的类里直接调用 run。
+- 也可以在 @SpringBootApplication 所注释的类里直接调用 run。
+- 还可以找到这个应用打好的 jar 包，通过 java -jar microservices-0.0.1-SNAPSHOT.jar 方式运行。
 
 Spring Boot 启动是通过一个 main 方法，以 jar 包方式运行。web 服务器是以嵌入的方式存在于应用当中，所有的配置、三方依赖都在jar包内。其实 Tomcat 就是内嵌在 Spring Boot 应用内的（嵌入式服务器），这也是为什么 Tomcat 的一些配置可以通过 Spring Boot 的配置文件进行修改。
 
