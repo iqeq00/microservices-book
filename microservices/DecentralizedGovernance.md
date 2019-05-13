@@ -70,7 +70,7 @@ Netflix是遵循这一理念的组织的一个很好的例子。 共享有用的
 
 我们看到团队使用广泛的基础设施自动化的另一个领域是管理生产中的微服务。 与我们上面的断言相反，只要部署很简单，单体应用和微服务之间没有太大的区别，每个部署的运营环境可能会截然不同。
 
-![micro-deployment](../Images/micro-deployment.png)
+![micro-deployment](../images/micro-deployment.png)
 
 ## 针对于失败来设计
 
