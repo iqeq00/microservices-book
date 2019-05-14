@@ -20,7 +20,7 @@ gradle 提供的一个任务，作用是将 Spring Boot 打包成一个独立的
 
 老版本的 gradle 插件命令 ：packageJar。
 
-**注意：基于 Spring Boot 的应用，打包方式都是使用 bootJar 命令，而不是 jar 命令。**jar 命令只是把工程打成一个 jar 包，但 bootJar 命令才是打包成一个可执行 jar 文件。这两种打包方式，打包出来的文件结构的差距也是非常大的。
+**注意：基于 Spring Boot 的应用，打包方式都是使用 bootJar 命令，而不是 jar 命令。jar 命令只是把工程打成一个 jar 包，但 bootJar 命令才是打包成一个可执行 jar 文件。这两种打包方式，打包出来的文件结构的差距也是非常大的。**
 
 打包生成目录：/build/libs/microservices-0.0.1-SNAPSHOT.jar。
 
