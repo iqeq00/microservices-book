@@ -16,4 +16,5 @@
   * [Spring Boot 应用起步与配置](springboot/SpringInitializr.md)
   * [Spring Boot 应用配置分析](springboot/Configure.md)
   * [Spring Boot 打包文件内容与结构](springboot/JarDirectoryStructure.md)
+  * [使用 Gradle 构建 Spring Boot 应用](springboot/GradlePlugin.md)
 
