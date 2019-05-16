@@ -17,4 +17,5 @@
   * [Spring Boot 应用配置分析](springboot/Configure.md)
   * [Spring Boot 打包文件内容与结构](springboot/JarDirectoryStructure.md)
   * [使用 Gradle 构建 Spring Boot 应用](springboot/GradlePlugin.md)
+  * [Spring Boot 参数自动装配](springboot/Autowired.md)
 
