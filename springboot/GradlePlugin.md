@@ -38,9 +38,9 @@ dependencies {
 }
 ```
 
-## 入口类
+## 主类
 
-Spring Boot 应用都有 1 个被 @SpringBootApplication 注释所标识的 java 类，这个类一般被称为 Spring Boot 应用的主类或入口类。
+Spring Boot 应用都有 1 个被 @SpringBootApplication 注释所标识的 java 类，这个类一般被称为 Spring Boot 应用的主类。
 
 ### 最佳实践
 
