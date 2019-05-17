@@ -18,4 +18,6 @@
   * [Spring Boot 打包文件内容与结构](springboot/JarDirectoryStructure.md)
   * [使用 Gradle 构建 Spring Boot 应用](springboot/GradlePlugin.md)
   * [Spring Boot 参数自动装配](springboot/Autowired.md)
+  * [Jar 文件规范](springboot/JarFileSpecification.md)
+  * [Spring Boot Loader 源码分析](springboot/Loader.md)
 
