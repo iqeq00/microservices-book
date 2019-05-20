@@ -157,3 +157,55 @@ protected void launch(String[] args) throws Exception {
 ```
 
 这里最重要的就是 ClassLoader，类加载器。
+
+#### getClassPathArchives
+
+返回所有符合条件的 jar 或 工程文件，并包装成一个类型为 Archive 的 List 对象。这里的符合条件是指在 BOOT-INF/lib/ 下的 jar 文件，或在 BOOT-INF/classes/ 下的所有工程文件。
+
+```java
+@Override
+protected List<Archive> getClassPathArchives() throws Exception {
+   List<Archive> archives = new ArrayList<>(
+         this.archive.getNestedArchives(this::isNestedArchive));
+   postProcessClassPathArchives(archives);
+   return archives;
+}
+```
+
+#### createClassLoader
+
+创建一个全新的类加载器，用来加载 getClassPathArchives 所返回的集合（jar 或者 工程文件），应用类加载器（也可以叫做系统类加载器）是加载不了这些文件的，就必须自己创建一个新的类加载器，用来加载这些存在于自定义目录内的文件。
+
+```java
+**
+ * Create a classloader for the specified archives.
+ * @param archives the archives
+ * @return the classloader
+ * @throws Exception if the classloader cannot be created
+ */
+protected ClassLoader createClassLoader(List<Archive> archives) throws Exception {
+   List<URL> urls = new ArrayList<>(archives.size());
+   for (Archive archive : archives) {
+      urls.add(archive.getUrl());
+   }
+   return createClassLoader(urls.toArray(new URL[0]));
+}
+```
+
+#### LaunchedURLClassLoader
+
+Spring Boot 的类加载器，urls 表示所有需要加载文件的 url（jar 文件的绝对路径），getClass().getClassLoader() 表示父加载器（也就是应用类加载器）。
+
+**注意：在创建一个类加载器的时候，一定要指定它的父加载器。**
+
+```java
+/**
+ * Create a classloader for the specified URLs.
+ * @param urls the URLs
+ * @return the classloader
+ * @throws Exception if the classloader cannot be created
+ */
+protected ClassLoader createClassLoader(URL[] urls) throws Exception {
+   return new LaunchedURLClassLoader(urls, getClass().getClassLoader());
+}
+```
