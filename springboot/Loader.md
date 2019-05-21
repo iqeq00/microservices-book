@@ -156,11 +156,11 @@ protected void launch(String[] args) throws Exception {
 }
 ```
 
-这里最重要的就是 ClassLoader，类加载器。
+这里最重要的就是 ClassLoader 这行代码，类加载器。
 
 #### getClassPathArchives
 
-返回所有符合条件的 jar 或 工程文件，并包装成一个类型为 Archive 的 List 对象。这里的符合条件是指在 BOOT-INF/lib/ 下的 jar 文件，或在 BOOT-INF/classes/ 下的所有工程文件。
+返回所有符合条件的 jar 或 工程文件，并包装成一个类型为 Archive 的 List 对象。这里的符合条件是指在 BOOT-INF/lib/ 下的 jar 文件，或在 BOOT-INF/classes/ 下的所有工程文件，用来构建 classpath。
 
 ```java
 @Override
@@ -171,10 +171,80 @@ protected List<Archive> getClassPathArchives() throws Exception {
    return archives;
 }
 ```
+定位当前执行的具体 jar 文件或者文件目录，通过磁盘上的绝对路径来定位，返回一个 Archive 对象。
+
+```java
+protected final Archive createArchive() throws Exception {
+   ProtectionDomain protectionDomain = getClass().getProtectionDomain();
+   CodeSource codeSource = protectionDomain.getCodeSource();
+   URI location = (codeSource != null) ? codeSource.getLocation().toURI() : null;
+   String path = (location != null) ? location.getSchemeSpecificPart() : null;
+   if (path == null) {
+      throw new IllegalStateException("Unable to determine code source archive");
+   }
+   File root = new File(path);
+   if (!root.exists()) {
+      throw new IllegalStateException(
+            "Unable to determine code source archive from " + root);
+   }
+   return (root.isDirectory() ? new ExplodedArchive(root)
+         : new JarFileArchive(root));
+}
+```
+
+返回与指定过滤器（EntryFilter）所匹配的嵌套归档文件。
+
+```java
+@Override
+public List<Archive> getNestedArchives(EntryFilter filter) throws IOException {
+    List<Archive> nestedArchives = new ArrayList<>();
+    for (Entry entry : this) {
+        if (filter.matches(entry)) {
+            nestedArchives.add(getNestedArchive(entry));
+        }
+    }
+    return Collections.unmodifiableList(nestedArchives);
+}
+```
+EntryFilter 过滤器，判断所指定的文件（具体 jar 文件或者文件目录）是否是一个嵌套条目 ，应该添加到classpath里，每个指定的文件都会调用一次。
+
+条件：在 BOOT-INF/classes/ 下的工程文件或者在 BOOT-INF/lib/ 下的第三方 jar 包。
+
+**注意：其实这里就是在判断，要执行的 jar 文件是否是按照 Spring Boot 特有的目录结构来放置工程文件，以及所依赖的第三方 jar 包。只有满足条件的工程文件或所依赖的第三方 jar 包才会进入下一步，也就是通过自定义类加载器来加载这些满足条件的文件，这里就需要 jar 文件规范相关知识。**
+
+```java
+static final String BOOT_INF_CLASSES = "BOOT-INF/classes/";
+static final String BOOT_INF_LIB = "BOOT-INF/lib/";
+
+@Override
+protected boolean isNestedArchive(Archive.Entry entry) {
+    if (entry.isDirectory()) {
+        return entry.getName().equals(BOOT_INF_CLASSES);
+    }
+    return entry.getName().startsWith(BOOT_INF_LIB);
+}
+```
+
+#### postProcessClassPathArchives
+
+是一个空方法，事后处理方法，回调方法。
+
+```java
+/**
+ * Called to post-process archive entries before they are used. Implementations can
+ * add and remove entries.
+ * @param archives the archives
+ * @throws Exception if the post processing fails
+ */
+protected void postProcessClassPathArchives(List<Archive> archives) throws Exception {
+}
+```
 
 #### createClassLoader
 
-创建一个全新的类加载器，用来加载 getClassPathArchives 所返回的集合（jar 或者 工程文件），应用类加载器（也可以叫做系统类加载器）是加载不了这些文件的，就必须自己创建一个新的类加载器，用来加载这些存在于自定义目录内的文件。
+创建一个指定归档文件（Archive）的类加载器，也就是用来加载 getClassPathArchives 所返回的集合（jar 或者 工程文件），应用类加载器（也可以叫做系统类加载器）是加载不了这些文件的，就必须自己创建一个新的类加载器，用来加载这些存在于自定义目录内的文件。
+
+这个方法是把返回的 List<Archive> 对象转撑一个 List<URL> 对象，URL 表示文件的绝对路径。
 
 ```java
 **
@@ -196,7 +266,9 @@ protected ClassLoader createClassLoader(List<Archive> archives) throws Exception
 
 Spring Boot 的类加载器，urls 表示所有需要加载文件的 url（jar 文件的绝对路径），getClass().getClassLoader() 表示父加载器（也就是应用类加载器）。
 
-**注意：在创建一个类加载器的时候，一定要指定它的父加载器。**
+**注意：在创建一个类加载器的时候，一定要指定它的父加载器 getClass().getClassLoader(），这这个父加载器其实就是应用类加载器。**
+
+这个方法创建一个指定归档文件（URL）的类加载器。
 
 ```java
 /**
