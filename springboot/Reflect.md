@@ -75,5 +75,3 @@ public class DogReflect {
 ```java
 mainMethod.invoke(new Dog(), new Object[] { null });
 ```
-
-本质原因
