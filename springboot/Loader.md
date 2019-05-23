@@ -449,6 +449,8 @@ mainMethod.invoke(null, new Object[] { this.args });
 2. 通过 Class 对象反射拿到 main 方法
 3. 通过反射执行 main 方法
 
+
+
 ## 思考
 
 **为什么 Spring Boot 规定入口类（被 @SpringBootApplication 注释的类）的启动方法是 main 方法？**
@@ -459,23 +461,42 @@ mainMethod.invoke(null, new Object[] { this.args });
 Method mainMethod = mainClass.getDeclaredMethod("main", String[].class);
 ```
 
-**原因在于为了方便 Spring Boot 应用开发阶段的运行、调试。**
+**原因在于为了方便 Spring Boot 应用开发阶段的运行、调试，但是类加载器不一样。**
 
 ### 两种运行方式
 
 Spring Boot 可以通过以下两种方式运行，好处就是便利了日常开发、调试、测试阶段。
 
+但是类加载器会有明显的区别，修改代码，把类加载器打印出来。
+
+```java
+@SpringBootApplication
+public class MicroservicesApplication {
+
+    public static void main(String[] args) {
+
+        System.out.println(MicroservicesApplication.class.getClassLoader());
+        SpringApplication.run(MicroservicesApplication.class, args);
+    }
+
+}
+```
+
 #### jar 
 
-通过指令运行。
+通过指令运行。从结果可以看出来是采用的 LaunchedURLClassLoader，也就是采用 Spring Boot 提供的全新类加载器。
 
 ```java
 java -jar microservices-0.0.1-SNAPSHOT.jar
 ```
 
+![LaunchedURLClassLoader](../images/LaunchedURLClassLoader.jpg)
+
 #### main
 
-直接在开发阶段的 ide（eclipse、idea）里右键 run 方式运行。
+直接在开发阶段的 ide（eclipse、idea）里右键 run 方式运行。**从结果可以看出来是采用的 AppClassLoader，也就是采用应用类加载器。**
+
+![AppClassLoader](../images/AppClassLoader.jpg)
 
 ## 总结
 
