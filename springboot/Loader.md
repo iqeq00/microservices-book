@@ -484,7 +484,7 @@ public class MicroservicesApplication {
 
 #### jar 
 
-通过指令运行。从结果可以看出来是采用的 LaunchedURLClassLoader，也就是采用 Spring Boot 提供的全新类加载器。
+通过指令运行。**从结果可以看出来是采用的 LaunchedURLClassLoader，也就是采用 Spring Boot 提供的全新类加载器。**
 
 ```java
 java -jar microservices-0.0.1-SNAPSHOT.jar
