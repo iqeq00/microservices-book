@@ -508,6 +508,8 @@ Spring Boot 打包机制，通过 gradle plugin 的 org.springframework.boot 插
 
 Spring Boot 运行机制，首先应用加载器（系统加载器）加载 org.springframework.boot.loader.JarLauncher。在加载 JarLauncher 的同时，创建一个 Spring Boot 特有的类加载器 LaunchedURLClassLoader，用这个特有的类加载器加载 BOOT-INF 下的工程文件和三方依赖。最后通过反射调用 Start-Class 应用入口类的 main 方法启动应用程序。
 
+上面所讲的是 jar 包形式运行，开发阶段直接在 ide 里右键 run 运行工程，则是直接调用系统的 AppClassLoader 类加载器。
+
 ### 优雅方式
 
 Spring Boot 通过自定义类加载器这种方式，优雅的解决了 jar 文件规范问题。至于把 spring-boot-loader.jar 这个 jar 包里的文件原封不动的拷贝过来，是为了给应用类加载器（系统加载器）一个程序入口。先加载 JarLauncher 到内容中，再通过自定义类加载器加载自己的应用。
