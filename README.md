@@ -1,9 +1,9 @@
 # Microservices-Book
-由微服务的概念入门，从浅至深，逐步学习 Spring Boot/Cloud，笔记电子书。
+由微服务的概念入门，从浅至深，逐步学习 Spring Boot/Cloud，理解其中的各种关系，笔记电子书。
 
 Spring Boot Version：2.1.4.RELEASE
 
-Spring Cloud Version：
+Spring Cloud Version：暂无
 
 Github：[iqeq00](https://github.com/iqeq00)
 
