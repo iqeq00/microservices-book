@@ -292,7 +292,7 @@ protected ClassLoader createClassLoader(List<Archive> archives) throws Exception
 
 Spring Boot 提供的自定义类加载器，urls 表示所有需要加载文件的 url（jar 文件的绝对路径），getClass().getClassLoader() 表示父加载器（也就是应用类加载器）。
 
-**注意：在创建一个类加载器的时候，一定要指定它的父加载器 getClass().getClassLoader(），这这个父加载器其实就是应用类加载器。**
+**注意：在创建一个类加载器的时候，一定要指定它的父加载器 getClass().getClassLoader(），这个父加载器其实就是应用类加载器。**
 
 这个方法创建一个针对指定归档文件（URL）的类加载器。
 
