@@ -2,7 +2,7 @@
 
 本章主要针对微服务的理论学习，了解理论，便于实践。
 
-| 序号 | 内容                                                     | 文件                           |
+| 序号 | 标题                                                     | 文件                           |
 | ---- | :------------------------------------------------------- | :----------------------------- |
 | 4-5  | [微服务架构和单体应用架构](MicroserviceAndMonolithic.md) | MicroserviceAndMonolithic.md   |
 | 6    | [微服务架构特征](MicroserviceCharacteristics.md)         | MicroserviceCharacteristics.md |
