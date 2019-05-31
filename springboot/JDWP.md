@@ -36,7 +36,7 @@ Java Debug Wire Protocol， Java 调试协议。
 
 ### transport
 
-传输规范，用 JDWP 调试程序一般叫做：dt_socket。
+传输规范，用 JDWP 调试程序一般叫做：**dt_socket**。
 
 ### address
 
@@ -70,3 +70,53 @@ Java Debug Wire Protocol， Java 调试协议。
 
 （用不到）。
 
+## 使用
+
+使用 JDWP 协议进行远程调试的时候，有两个 socket，一个是服务器，另一个是客户端。服务器优先启动，然后等待客户端来连接，客户端也称为调试器（debugger）。
+
+### 关联源代码
+
+首先把想要调试的源代码和 IDE 进行关联，并在 IDE 内打好断点。
+
+题外话：直接在 idea 里面关联了 spring-boot-loader.jar 源码后，打好断点。右键 debug 来调试是无法进入 spring-boot-loader.jar 源码的，原因还是因为类加载器的问题。右键使用的是系统类加载器，并没有使用到 Spring Boot 提供的类加载器。
+
+### 启动服务端 socket
+
+监听调试器，启动好服务器端的 socket。
+
+```java
+java -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5050 -jar microservices-0.0.1-SNAPSHOT.jar
+```
+
+这里的 address 不用写 ip 地址，只需要些端口号就可以了。因为这里是启动服务器，只有客户端来连接服务器的时候，才需要指定服务器的 ip ，而服务器启动只需要指定端口就可以了。
+
+![jdwp-dt-socket](../images/jdwp-dt-socket.jpg)
+
+当出现 Listening for transport ... 的时候就说明服务端的 socket 已经启动成功了，在本地 5050 这个端口号上等待客户端 socket 的连接。
+
+### 启动客户端 socket
+
+首先在 Idea 的 Run/Debug 里面找到 Remote 选项。
+
+![idea-run-remote](../images/idea-run-remote.jpg)
+
+随便取一个名字。
+
+![jdwp-remote-client](../images/jdwp-remote-client.jpg)
+
+Debugger mode 选择 Attach to remote JVM，表示附加到远程的 JVM 上。Transport 选择 Socket 方式，Host 为本机，Port 修改为 5050，module 选择我们自己的模块。
+
+会发现下面出现了命令行指令
+```java
+-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5050
+```
+
+address 没有 ip 的原因是调试本机 localhost 可以省略，连接远程的话就必须把 ip 写全。比对没什么错误后，点击 OK，就可以在 Idea 里面直接运行了，点击 debug 小虫虫。
+
+![idea-run-remote-button](../images/idea-run-remote-button.jpg)
+
+神奇般的进入了之前在 JarLauncher 里面打的断点。
+
+![idea-debug-JarLaunher](../images/idea-debug-JarLaunher.jpg)
+
+现在就可以用调试的方式，来逐步阅读 spring-boot-loader.jar 源码了，对于特别复杂的框架源码来说，这样的效率提升大大降低了阅读源码的困难性。
