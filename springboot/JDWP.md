@@ -119,4 +119,4 @@ address 没有 ip 的原因是调试本机 localhost 可以省略，连接远程
 
 ![idea-debug-JarLaunher](../images/idea-debug-JarLaunher.jpg)
 
-现在就可以用调试的方式，来逐步阅读 spring-boot-loader.jar 源码了，对于特别复杂的框架源码来说，这样的效率提升大大降低了阅读源码的困难性。
+现在就可以用调试的方式，来逐步阅读 spring-boot-loader.jar 源码了，对于特别复杂的框架源码来说，实时的查看每一步执行的结果，这样的效率提升大大降低了阅读源码的困难性。
