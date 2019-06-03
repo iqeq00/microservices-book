@@ -120,3 +120,8 @@ address 没有 ip 的原因是调试本机 localhost 可以省略，连接远程
 ![idea-debug-JarLaunher](../images/idea-debug-JarLaunher.jpg)
 
 现在就可以用调试的方式，来逐步阅读 spring-boot-loader.jar 源码了，对于特别复杂的框架源码来说，实时的查看每一步执行的结果，这样的效率提升大大降低了阅读源码的困难性。
+
+## 注意
+
+以上是基于 jar 运行方式的远程调试，如果目标应用是 web 应用，那么需要针对 tomcat 做一些 JDWP 的配置，就可以远程调试 web 应用了。**一旦客户端断开了调试，那么服务器也需要重新启动 socket。**
+
