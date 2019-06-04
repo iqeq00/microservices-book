@@ -6,7 +6,7 @@ typora-copy-images-to: ..\images
 
 ## Spring Boot jar
 
-我们之间就发现 Spring Boot 打包出来的 jar 解压后，有三个目录。
+我们之前就发现 Spring Boot 打包出来的 jar 解压后，有三个目录。
 
 ![SpringBootJarDir](../images/SpringBootJarDir.jpg)
 
