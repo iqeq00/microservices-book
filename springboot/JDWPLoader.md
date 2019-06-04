@@ -233,8 +233,20 @@ public void run() throws Exception {
 
 Thread.currentThread().getContextClassLoader() 获取当前线程上下文类加载器，其实也就是获取我们之前已经设置好的 LaunchedURLClassLoader。
 
-可以观察 mainClass 是什么？
+可以观察 mainClass 是什么？就是我们应用的入口。
 
 ![runMainClass](../images/runMainClass.jpg)
 
-然后
+再观察反射获得的 method。
+
+![runMainMethod](../images/runMainMethod.jpg)
+
+最后，开始启动了。
+
+![springbootJDWP](../images/springbootJDWP.jpg)
+
+## 总结
+
+Spring Boot Loader 采用非常精巧、整洁的设计，让应用能以不符合 jar 包规范的方式运行，也就是 FatJar。同时还能以传统的 `java -jar` 这种方式去启动执行，通过自定义类加载器的方式，非常优雅且合理的规避了很多 [Jar 文件规范](JarFileSpecification.md) 问题。
+
+借助于 Spring Boot Loader，可以让应用能以 FatJar 形式打成 jar 包，并部署。
