@@ -49,3 +49,4 @@ Spring Boot 应用主类所放置的位置，一般是在 package 的最顶层�
 如下图：
 
 ![SpringBootApplication](../images/SpringBootApplication.jpg)
+

@@ -32,7 +32,7 @@ gradle 提供的一个任务，作用是将 Spring Boot 打包成一个独立的
 
 **注意：这种方式其实是 Spring Boot 应用部署的标准方式，先把工程通过 bootJar 命令打包成一个可运行的 jar 文件。然后通过 java -jar 命令来执行这个 jar 文件。**
 
-当然 Spring Boot 应用也支持把工程打包成 war 文件，不过要把 内嵌 tomcat 相关的 jar 包都删除掉，再部署到外部的 tomcat 容器中。
+当然 Spring Boot 应用也支持把工程打包成 war 文件，不过要把内嵌 tomcat 相关的 jar 包都删除掉，再部署到外部的 tomcat 容器中。
 
 ## bootJar 文件分析
 
@@ -42,13 +42,13 @@ gradle 提供的一个任务，作用是将 Spring Boot 打包成一个独立的
 
 #### java 解压缩 jar
 
-通过 java 自带的 jar 指令解压： jar -xvf  microservices-0.0.1-SNAPSHOT.jar
+通过 java 自带的 jar 指令解压： `jar -xvf  microservices-0.0.1-SNAPSHOT.jar`
 
 这种方式不好的原因在于，会把解压后的所有文件都直接放在当前目录，而不能把解压后的所有文件放在一个指定的目录内。
 
 #### unzip 解压缩 jar
 
-通过 mac 自带的 unzip 指令解压：unzip microservices-0.0.1-SNAPSHOT.jar -d ./microservices
+通过 mac 自带的 unzip 指令解压：`unzip microservices-0.0.1-SNAPSHOT.jar -d ./microservices`
 
 ### 解压缩后的目录结构
 
@@ -58,7 +58,7 @@ gradle 提供的一个任务，作用是将 Spring Boot 打包成一个独立的
 
 ##### classes
 
-当前工程编译好的结果文件（也就是 class 字节码文件和相关配置文件）都在这里，包含 src/main/java 和 src/main/resources 下的所有文件。
+当前工程编译好的结果文件（也就是 class 字节码文件和相关配置文件）都在这里，包含 **src/main/java** 和 **src/main/resources** 下的所有文件。
 
 ##### lib
 
