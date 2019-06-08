@@ -4,13 +4,13 @@
 
 ## Main-Class 位置
 
-对于一个标准的 java jar 归档文件，规定一旦指定了 Main-Class 类信息，那么这个类连同它的包结构就必须放在这个 jar 归档文件的最顶层目录下，相当于整个应用工程的代码都放在了 jar 文件的最顶层目录下。这个类不允许嵌套，如果出现了嵌套（jar 文件内嵌套了 jar文件内的 Main-Class 类），会导致 Main-Class 类不能执行，这个类只有在 jar 归档文件的最顶层目录下才能被执行。
+对于一个标准的 java jar 归档文件，规定一旦指定了 Main-Class 类信息，那么这个类连同它的包结构就必须放在这个 jar 归档文件的最顶层目录下，相当于整个应用工程的代码都放在了 jar 文件的最顶层目录下。这个类不允许嵌套，如果出现了嵌套（jar 文件内嵌套了 jar 文件内的 Main-Class 类），会导致 Main-Class 类不能执行，这个类只有在 jar 归档文件的最顶层目录下才能被执行。
 
 比如：Spring Boot 打包后的 jar。
 
 ![MANIFEST.MF-01](../images/MANIFEST.MF-01.jpg)
 
-**这里指定了 Main-Class 类信息，那么 JarLauncher 这个入口类连同它的包结构 org.springframework.boot.loader 就必须在 Spring Boot 打包后的 jar 的最顶层目录下。** 
+**这里指定了 Main-Class 类信息，那么 JarLauncher 这个入口类连同它的包结构 org.springframework.boot.loader 就必须在 Spring Boot 打包后的 jar 最顶层目录下。** 
 
 
 
