@@ -14,11 +14,11 @@ typora-copy-images-to: ..\images
 new JarLauncher();
 ```
 
-在启动的第一步，子类 JarLauncher 构造器虽然没做什么，父类 ExecutableArchiveLauncher 在构造器中会调用 createArchive 方法来构造一个 Archive。其实这个 Archive 返回的就是被执行 jar 的绝对路径，并包装成一个 JarFileArchive。
+在启动的第一步，子类 JarLauncher 构造器虽然没做什么，但是父类 ExecutableArchiveLauncher 在构造器中会调用 createArchive 方法来构造一个 Archive。其实这个 Archive 返回的就是被执行 jar 的绝对路径，并包装成一个 JarFileArchive。
 
 ![createArchive](../images/createArchive.jpg)
 
-观察 archive 的值。
+观察 archive 的值，会发现就是 jar 在本地的绝对路径，**前面的 jar:file:/ 和后面的 !/ 都是 jar 规范。**
 
 ![archiveValue](../images/archiveValue.jpg)
 
@@ -145,9 +145,9 @@ protected ClassLoader createClassLoader(URL[] urls) throws Exception {
 
 ![Launcher$AppClassLoader1](../images/Launcher$AppClassLoader1.jpg)
 
-上面的过程，也解释了为什么 Spring Boot 要把 spring-boot-loader.jar 整个 jar 包直接解压到 Spring Boot 应用 jar 包的最顶层，而不是传递依赖。通过这种方式，由系统类加载器来加载 Launcher 这些类，而后在由自定义的 LaunchedURLClassLoader 来加载 BOOT-INF 下面的工程文件和三方依赖 jar 文件。
+上面的过程，也解释了为什么 Spring Boot 要把 spring-boot-loader.jar 整个 jar 包直接解压到 Spring Boot 应用 jar 包的最顶层，而不是采用传递依赖方式。通过这种方式，由系统类加载器来加载 Launcher 这些类，然后在由自定义的 LaunchedURLClassLoader 来加载 BOOT-INF 下面的工程文件和三方依赖 jar 文件。
 
-到了这一步，自定义的类加载器 LaunchedURLClassLoader 已经准备好了。
+**到了这一步，自定义的类加载器 LaunchedURLClassLoader 已经准备好了。**
 
 ### launch
 
@@ -231,13 +231,13 @@ public void run() throws Exception {
 }
 ```
 
-Thread.currentThread().getContextClassLoader() 获取当前线程上下文类加载器，其实也就是获取我们之前已经设置好的 LaunchedURLClassLoader。
+**Thread.currentThread().getContextClassLoader() 获取当前线程上下文类加载器，其实也就是获取我们之前已经设置好的 LaunchedURLClassLoader。**
 
 可以观察 mainClass 是什么？就是我们应用的入口。
 
 ![runMainClass](../images/runMainClass.jpg)
 
-再观察反射获得的 method。
+再观察反射获得的 method，invoke 调用这个方法。
 
 ![runMainMethod](../images/runMainMethod.jpg)
 
