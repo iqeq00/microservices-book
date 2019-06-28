@@ -14,7 +14,7 @@ typora-copy-images-to: ..\images
 
 #### classes
 
-当前工程编译好的结果文件，包含 src/main/java 和 src/main/resources 下的所有文件。
+当前工程编译好的结果文件，包含 src/main/java 和 src/main/resources 目录下的所有文件。
 
 #### lib
 
@@ -232,9 +232,9 @@ public List<Archive> getNestedArchives(EntryFilter filter) throws IOException {
 
 EntryFilter 过滤器，判断 entry 所指定的文件（具体 jar 文件或者文件目录）是否满足条件 ，满足条件的应该添加到 classpath 里，每个指定的文件都会调用一次。
 
-条件：在 BOOT-INF/classes/ 下的工程文件或者在 BOOT-INF/lib/ 下的第三方 jar 包。
+条件：在 BOOT-INF/classes/ 目录下的工程文件或者在 BOOT-INF/lib/ 目录下的第三方 jar 包。
 
-**注意：其实这里就是在判断，要执行的 jar 文件是否是按照 Spring Boot 特有的目录结构来放置工程文件，以及所依赖的第三方 jar 包。只有满足条件的工程文件或所依赖的第三方 jar 包才会进入下一步，也就是通过自定义类加载器来加载这些满足条件的文件，这里就需要 jar 文件规范相关知识。**
+**注意：其实这里就是在判断，要执行的 jar 文件是否是按照 Spring Boot 特有的目录结构来放置工程文件，以及所依赖的第三方 jar 包。只有满足条件的工程文件或所依赖的第三方 jar 包才会进入下一步，也就是通过自定义类加载器来加载这些满足条件的文件，这里就需要 [jar 文件规范](springboot/jarfilespecification)相关知识。**
 
 ```java
 static final String BOOT_INF_CLASSES = "BOOT-INF/classes/";
@@ -467,7 +467,7 @@ Method mainMethod = mainClass.getDeclaredMethod("main", String[].class);
 
 Spring Boot 可以通过以下两种方式运行，好处就是便利了日常开发、调试、测试阶段。
 
-但是类加载器会有明显的区别，修改代码，把类加载器打印出来。
+但是类加载器会有明显的区别，修改项目代码，把类加载器打印出来。
 
 ```java
 @SpringBootApplication
