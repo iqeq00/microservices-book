@@ -71,4 +71,5 @@ AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(
 </beans>
 ```
 
-传统方式，
+传统方式，在 Java Config 兴起以前，当时的标准就是使用 xml 来实现，
+
