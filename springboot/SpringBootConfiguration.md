@@ -2,6 +2,8 @@
 
 所在包：org.springframework.boot
 
+所在 jar:  spring-boot.jar
+
 ```java
 package org.springframework.boot;
 
