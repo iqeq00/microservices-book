@@ -71,5 +71,7 @@ AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(
 </beans>
 ```
 
-传统方式，在 Java Config 兴起以前，当时的标准就是使用 xml 来实现配置，
+传统方式，在 Java Config 兴起以前，当时的标准就是使用 xml 来实现配置，在 Spring Boot 当中很少这么用，而使用注解方式。
+
+
 
