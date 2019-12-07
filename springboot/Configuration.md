@@ -316,6 +316,8 @@ database-config.xml 配置文件中的内容就被导入到 AppConfig 当中了�
 
 此外，嵌套的 @Configuration 类可以与 @Profile 注解一起搭配使用，为内层的 @Configuration 类提供同一配置 bean 的两个不同选择，比如开发环境和测试环境，相同 bean 的两种选择。
 
+在一个 Spring Boot 的项目中，基本都会存在一个 config 的代码包。里面存放着项目的各种各样配置类，而配置的具体值，很可能放置在外部的 properties 或者 yml 文件中。
+
 ## 延迟加载
 
 默认情况下，在容器启动的时候，被 @Bean 注解修饰的方法会提早实例化。为了避免这种情况，而是用到的时候才初始化。@Configuration 注解可以与 @Lazy 注解搭配使用，用来标识所有的被 @Bean 注解所修饰的方法，在默认情况下都是延迟初始化的。另外 @Lazy 也可以用于单个的 @Bean 方法搭配使用。也就是如果 @Lazy 修饰类，类中所有的 @Bean 方法都是延迟初始化，如果 @Lazy 修饰具体的一个 @Bean 方法，只有这个方法才是延迟初始化。
@@ -340,8 +342,17 @@ Spring 测试模块中提供的 Spring TestContext 框架提供了 @ContextConfi
    }
 ```
 
+## 约束
 
+@Configuration 所修饰的类是有几点约束。
+
+- @Configuration 必须修饰类。
+- @Configuration 类必须是非最终类，不能被 final 修饰。
+- @Configuration 类必须是非本地的（即不得在方法中声明）。
+- 嵌套的 @Configuration 类必须声明为静态，被 static 修饰。
+- @Bean 方法可能不会创建更多的配置类（任何这样的实例都将被视为常规 Bean，其配置注释保持未被检测到）。
 
 ## 结尾
 
-在一个 Spring Boot 的项目中，基本都会存在一个 config 的代码包。里面存放着项目的各种各样配置类，而配置的具体值，很可能放置在外部的 properties 或者 yml 文件中。
+在 Spring Boot 的开发中，这种 @Configuration 类是一定会出现的。有些配置是使用了某些外部 jar 配置的，还有些配置是根据项目实际需要自定义的。自定义的配置一定要以 @Configuration 这种方式来应用。
+
