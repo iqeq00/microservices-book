@@ -14,5 +14,5 @@
 | 23      | [使用 JDWP 调试 Spring Boot Loader 源码](JDWPLoader.md)    | JDWPLoader.md              |
 | 24      | [@SpringBootApplication](SpringBootApplication.md)         | SpringBootApplication.md   |
 | 24      | [@SpringBootConfiguration](SpringBootConfiguration.md)     | SpringBootConfiguration.md |
-| 24 - 25 | [@Configuration](Configuration.md)                         | Configuration.md           |
+| 24 - 26 | [@Configuration](Configuration.md)                         | Configuration.md           |
 
