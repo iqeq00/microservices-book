@@ -42,3 +42,7 @@ public @interface SpringBootConfiguration {
 整个项目应用当中应该只包含一个 @SpringBootConfiguration 注解，大多数的 Spring Boot 应用都会直接从 @SpringBootApplication 注解当中继承 @SpringBootConfiguration 注解。
 
 在整个项目应用当中，只使用一次，而且一般是通过使用 @SpringBootApplication 这个注解，达到间接使用 @SpringBootConfiguration 注解。
+
+## 思考
+
+在 Spring Boot 应用解析的时候，@SpringBootConfiguration 一定是比 @Configuration 做了某些细化或增强，否则直接使用 @Configuration 来注解 @SpringBootApplication 不就可以了？所以 @SpringBootConfiguration 是针对 Spring Boot 这个框架做了某些细化或增强。
